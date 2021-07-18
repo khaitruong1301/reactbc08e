@@ -6,7 +6,10 @@
 // import Demo from "./Databinding/Demo";
 // import HandleEvent from "./HandleEvent/HandleEvent";
 // import StyleComponent from "./StyleComponent/StyleComponent";
-import StateDemo from "./StateDemo/StateDemo"
+// import StateDemo from "./StateDemo/StateDemo"
+// import HomeLayout from "./Props/DemoProps/HomeLayout";
+// import RenderWithMap from "./RenderWithMap/RenderWithMap";
+import ShoesShop from "./Props/ShoesShop/ShoesShop";
 function App() {
   return (
     <div className="App">
@@ -14,12 +17,15 @@ function App() {
           {/* <Databinding /> */}
           {/* <BaiTapThucHanhLayout /> */}
           {/* <Demo />  */}
+        
           {/* <HandleEvent></HandleEvent> */}
 
           {/* <StyleComponent /> */}
           {/* <p className="fontBold">ahihi</p> */}
-          <StateDemo />
-     
+          {/* <StateDemo /> */}
+          {/* <HomeLayout /> */}
+          {/* <RenderWithMap /> */}
+          <ShoesShop />
     </div>
   );
 }
