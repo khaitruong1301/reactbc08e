@@ -9,7 +9,10 @@
 // import StateDemo from "./StateDemo/StateDemo"
 // import HomeLayout from "./Props/DemoProps/HomeLayout";
 // import RenderWithMap from "./RenderWithMap/RenderWithMap";
-import ShoesShop from "./Props/ShoesShop/ShoesShop";
+// import ShoesShop from "./Props/ShoesShop/ShoesShop";
+// import BaiTapXemChiTiet from "./Props/BaiTapXemChiTiet/BaiTapXemChiTiet";
+import ExerciseCarStore from "./Props/ExerciseCarStore/ExerciseCarStore";
+
 function App() {
   return (
     <div className="App">
@@ -25,7 +28,9 @@ function App() {
           {/* <StateDemo /> */}
           {/* <HomeLayout /> */}
           {/* <RenderWithMap /> */}
-          <ShoesShop />
+          {/* <ShoesShop /> */}
+          {/* <BaiTapXemChiTiet /> */}
+          <ExerciseCarStore />
     </div>
   );
 }
