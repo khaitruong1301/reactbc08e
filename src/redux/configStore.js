@@ -1,4 +1,5 @@
 import {combineReducers, createStore} from 'redux';
+import { baiTapGameXucXacReducer } from './reducers/baiTapGameXucXacReducer';
 
 import { gioHangReducer } from './reducers/gioHangReducer';
 
@@ -7,24 +8,17 @@ import { gioHangReducer } from './reducers/gioHangReducer';
 const rootReducer = combineReducers({
     //Các state ứng dụng sẽ được lưu tại đây
     gioHangReducer: gioHangReducer ,
-
-    // reducerB: (state='', action) => {
-    //     console.log('action2',action);
-
-    //     return state;
-    // },
-
-    // reducerC: (state='', action) => {
-    //     console.log('action3',action);
-
-    //     return state;
-    // }
+    baiTapGameXucXacReducer:baiTapGameXucXacReducer
 
 });
 
 
 
-export const store = createStore(rootReducer);
+export const store = createStore(
+    rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
+);
 
 
 
