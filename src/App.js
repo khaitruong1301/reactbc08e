@@ -14,6 +14,8 @@
 // import ExerciseCarStore from "./Props/ExerciseCarStore/ExerciseCarStore";
 // import ExerciseCarStore from "./Props/ExerciseCarStore/ExerciseCarStore";
 
+import LifeCycleReact from "./LifeCycleReact/LifeCycleReact";
+
 // import BaiTapGioHang from "./DemoRedux/BaiTapGioHang/BaiTapGioHang";
 
 // import ExerciseCart from "./Props/ExerciseCart/ExerciseCart";
@@ -41,6 +43,7 @@ function App() {
           {/* <BaiTapGioHang /> */}
           {/* <BaiTapGameXucXac /> */}
           <BaiTapQuanLyNguoiDung />
+          {/* <LifeCycleReact /> */}
     </div>
   );
 }

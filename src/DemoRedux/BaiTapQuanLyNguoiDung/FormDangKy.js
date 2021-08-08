@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 class FormDangKy extends Component {
 
     state = {
@@ -75,18 +75,39 @@ class FormDangKy extends Component {
         }
         if (!valid) {//Không hợp lệ
             alert('Dữ liệu không hợp lệ !')
-            return ;
-        }
-        //submit lên redux tại đây khi tất cả hợp lệ
-        const action = {
-            type:'THEM_NGUOI_DUNG',
-            nguoiDung: this.state.values
+            return;
         }
 
-        this.props.dispatch(action)
+
+
     }
 
+    //Chạy trước render sau khi props hoặc sau khi state thay dổi
+
+    // static getDerivedStateFromProps(newProps, currentState) {
+    //     //Trường hợp bấm chỉnh sửa thì cần đổi state, còn trường hợp handle change thì không cần thao gán props vào state nữa
+    //     if (newProps.nguoiDungChinhSua.taiKhoan !== currentState.values.taiKhoan) {
+    //         //return về state mới
+    //         return {
+    //             ...currentState,
+    //             values: newProps.nguoiDungChinhSua
+    //         }
+    //     }
+    //     return currentState;
+    // }
+
+    //Chạy trước render sau khi props thay dổi
+    componentWillReceiveProps(newProps) {
+        this.setState({
+            values:newProps.nguoiDungChinhSua
+        })
+    }
+
+ 
+    
     render() {
+        let { taiKhoan, hoTen, matKhau, email, soDienThoai, maLoaiNguoiDung } = this.state.values;
+
         return (
             <form className="card mt-5" onSubmit={this.handleSubmit}>
                 <div className="card-header bg-dark text-white">Form đăng ký</div>
@@ -95,17 +116,17 @@ class FormDangKy extends Component {
                         <div className="col-6">
                             <div className="form-group">
                                 <p>Tài khoản</p>
-                                <input className="form-control" name="taiKhoan" onChange={this.handleChangeInput} />
+                                <input value={taiKhoan} className="form-control" name="taiKhoan" onChange={this.handleChangeInput} />
                                 <p className="text-danger">{this.state.errors.taiKhoan}</p>
                             </div>
                             <div className="form-group">
                                 <p>Mật khẩu</p>
-                                <input className="form-control" name="matKhau" type="password" onChange={this.handleChangeInput} />
+                                <input value={matKhau} className="form-control" name="matKhau" type="password" onChange={this.handleChangeInput} />
                                 <p className="text-danger">{this.state.errors.matKhau}</p>
                             </div>
                             <div className="form-group">
                                 <p>Email</p>
-                                <input typeEmail="email" className="form-control" name="email" onChange={this.handleChangeInput} />
+                                <input value={email} typeEmail="email" className="form-control" name="email" onChange={this.handleChangeInput} />
                                 <p className="text-danger">{this.state.errors.email}</p>
 
                             </div>
@@ -113,19 +134,19 @@ class FormDangKy extends Component {
                         <div className="col-6">
                             <div className="form-group">
                                 <p>Họ tên</p>
-                                <input className="form-control" name="hoTen" onChange={this.handleChangeInput} />
+                                <input value={hoTen} className="form-control" name="hoTen" onChange={this.handleChangeInput} />
                                 <p className="text-danger">{this.state.errors.hoTen}</p>
 
                             </div>
                             <div className="form-group">
                                 <p>Số điện thoại</p>
-                                <input className="form-control" name="soDienThoai" onChange={this.handleChangeInput} />
+                                <input value={soDienThoai} className="form-control" name="soDienThoai" onChange={this.handleChangeInput} />
                                 <p className="text-danger">{this.state.errors.soDienThoai}</p>
 
                             </div>
                             <div className="form-group">
                                 <p>Mã loại người dùng</p>
-                                <select className="form-control" name="maLoaiNguoiDung" onChange={this.handleChangeInput}>
+                                <select value={maLoaiNguoiDung} className="form-control" name="maLoaiNguoiDung" onChange={this.handleChangeInput}>
                                     <option value="KhachHang">Khách hàng</option>
                                     <option value="QuanTri">Quản trị</option>
                                 </select>
@@ -143,5 +164,11 @@ class FormDangKy extends Component {
 }
 
 
+const mapStateToProps = (state) => {
+    return {
+        nguoiDungChinhSua: state.baiTapQuanLyNguoiDungReducer.nguoiDungChinhSua,
+    }
+}
 
-export default  connect ()(FormDangKy)
+
+export default connect(mapStateToProps)(FormDangKy)
